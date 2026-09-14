@@ -972,6 +972,76 @@ footer{
   }
 }
 
+
+/* ===== Homepage responsive stability patch ===== */
+html,body{max-width:100%;overflow-x:hidden}
+img{display:block;max-width:100%}
+input,select,textarea,button{min-width:0;max-width:100%}
+.hero-copy,.hero-copy-inner,.cta-inner,.form-wrap,.form-grid,.case,.split{min-width:0}
+.hero h1,.section h2,.step h3,.service h3,.case h2,.card h3{overflow-wrap:anywhere}
+
+@media(max-width:900px){
+  .wrap{width:100%;padding-left:20px;padding-right:20px}
+  .nav{height:70px}
+  .hero{grid-template-columns:1fr;gap:0;padding:0}
+  .hero-copy{padding:62px 0}
+  .hero-copy-inner{max-width:100%}
+  .hero h1{font-size:clamp(42px,11vw,66px);max-width:100%}
+  .hero p{font-size:16px}
+  .hero-art{min-height:430px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+  .stats .intro,.stat-note{grid-column:1/-1}
+  .stat{min-width:0}
+  .stat b{font-size:34px}
+  .split,.case,.cta-inner{grid-template-columns:1fr;gap:45px}
+  .problems{grid-template-columns:1fr}
+  .problem:nth-child(odd),.problem:nth-child(even){border-right:0;padding-left:0;padding-right:0}
+  .service{grid-template-columns:42px minmax(0,1fr) 34px;gap:8px}
+  .service:hover{padding-left:0;padding-right:0}
+  .service h3{font-size:clamp(23px,6vw,30px)}
+  .service-detail{padding-left:50px;padding-right:30px}
+  .steps,.cards{grid-template-columns:1fr}
+  .step{border-right:0;border-bottom:1px solid #3c4650;margin:0;padding:28px 0}
+  .step:last-child{border-bottom:0}
+  .case-visual{min-height:380px}
+  .result-grid,.form-grid{grid-template-columns:1fr 1fr}
+  .form-wrap{padding:28px 22px}
+  .field input,.field select,.field textarea{font-size:16px}
+  .foot{display:block}
+  .footlinks{margin-top:28px;flex-wrap:wrap}
+}
+@media(max-width:560px){
+  .wrap{padding-left:16px;padding-right:16px}
+  .nav{height:66px}
+  .mobile-menu{padding:92px 16px 24px}
+  .mobile-menu a{font-size:32px}
+  .hero-copy{padding:52px 0}
+  .hero h1{font-size:clamp(39px,12vw,54px)}
+  .hero-art{min-height:310px}
+  .art-card{left:16px;right:16px;bottom:16px;max-width:none}
+  .stats{grid-template-columns:1fr 1fr;gap:0 10px}
+  .stat{padding:18px 8px}
+  .stat b{font-size:29px}
+  .stat span{font-size:10px;line-height:1.45}
+  .section{padding:68px 0}
+  .section h2{font-size:clamp(38px,10.5vw,52px)}
+  .lead{font-size:17px}
+  .service{grid-template-columns:34px minmax(0,1fr) 28px;padding:22px 0}
+  .service h3{font-size:22px}
+  .service-detail{padding:0 24px 22px 34px}
+  .case-visual{min-height:300px}
+  .case-tag{left:16px;right:16px;bottom:16px}
+  .result-grid{grid-template-columns:1fr 1fr}
+  .result b{font-size:29px}
+  .cta{padding:62px 0}
+  .form-wrap{padding:20px 15px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .form-wrap .btn{width:100%}
+  footer{padding:46px 0 26px}
+  .footlinks{gap:14px 20px}
+}
+
 </style>
 </head>
 
@@ -1774,29 +1844,28 @@ const mobileMenu =
   document.getElementById('mobileMenu');
 
 
+const setMobileMenu = (open) => {
+  mobileMenu.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open);
+  menuToggle.setAttribute('aria-expanded', String(open));
+  menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  menuToggle.textContent = open ? 'CLOSE ×' : 'MENU +';
+};
+
 menuToggle.addEventListener('click', () => {
+  setMobileMenu(!mobileMenu.classList.contains('open'));
+});
 
-  const open =
-    mobileMenu.classList.toggle('open');
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && mobileMenu.classList.contains('open')) {
+    setMobileMenu(false);
+  }
+});
 
-  document.body.classList.toggle(
-    'menu-open',
-    open
-  );
-
-  menuToggle.setAttribute(
-    'aria-expanded',
-    String(open)
-  );
-
-  menuToggle.setAttribute(
-    'aria-label',
-    open ? 'Close menu' : 'Open menu'
-  );
-
-  menuToggle.textContent =
-    open ? 'CLOSE ×' : 'MENU +';
-
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900 && mobileMenu.classList.contains('open')) {
+    setMobileMenu(false);
+  }
 });
 
 
@@ -1865,7 +1934,10 @@ document
 
     service.addEventListener(
       'click',
-      toggleService
+      event => {
+        if (event.target.closest('a')) return;
+        toggleService();
+      }
     );
 
 
