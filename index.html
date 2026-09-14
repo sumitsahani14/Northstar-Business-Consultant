@@ -1042,6 +1042,452 @@ input,select,textarea,button{min-width:0;max-width:100%}
   .footlinks{gap:14px 20px}
 }
 
+
+/* =========================================================
+   FINAL MOBILE POLISH — preserves desktop design
+   ========================================================= */
+@media (max-width:900px){
+  html{
+    width:100%;
+    overflow-x:hidden;
+    -webkit-text-size-adjust:100%;
+  }
+
+  body{
+    width:100%;
+    min-width:0;
+    overflow-x:hidden;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:20px !important;
+    padding-right:20px !important;
+  }
+
+  /* Give mobile sections a deliberate reading rhythm. */
+  .section{
+    padding-top:64px;
+    padding-bottom:64px;
+  }
+
+  .section h2{
+    font-size:clamp(38px,10.5vw,48px);
+    line-height:1.06;
+    letter-spacing:-.02em;
+    margin-top:14px;
+    margin-bottom:24px;
+    max-width:100%;
+  }
+
+  .label,.eyebrow{
+    font-size:10px;
+    letter-spacing:.20em;
+    line-height:1.5;
+  }
+
+  .lead{
+    font-size:17px;
+    line-height:1.65;
+    margin-top:0;
+    margin-bottom:22px;
+  }
+
+  .split{
+    width:100%;
+    grid-template-columns:minmax(0,1fr);
+    gap:38px;
+  }
+
+  .split > div{
+    min-width:0;
+  }
+
+  .split p{
+    overflow-wrap:break-word;
+  }
+
+  .problems{
+    width:100%;
+    grid-template-columns:1fr;
+    margin-top:26px;
+  }
+
+  .problem,
+  .problem:nth-child(odd),
+  .problem:nth-child(even){
+    padding:17px 0;
+    border-right:0;
+    font-size:14px;
+    line-height:1.5;
+  }
+
+  /* Stats: clean 2 × 2 dashboard instead of cramped columns. */
+  .stats{
+    width:100%;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:0;
+    padding:42px 20px;
+  }
+
+  .stats .intro{
+    grid-column:1/-1;
+    font-size:25px;
+    line-height:1.18;
+    padding:0 0 30px;
+    max-width:340px;
+  }
+
+  .stat{
+    min-width:0;
+    padding:20px 14px 22px 0;
+    border-left:0;
+    border-top:1px solid var(--stone);
+  }
+
+  .stat:nth-of-type(odd){
+    border-right:1px solid var(--stone);
+    padding-right:16px;
+  }
+
+  .stat:nth-of-type(even){
+    padding-left:16px;
+  }
+
+  .stat b{
+    display:block;
+    font-size:clamp(30px,9vw,38px);
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  .stat span{
+    font-size:9px;
+    line-height:1.5;
+    letter-spacing:.11em;
+    margin-top:8px;
+  }
+
+  .stat-note{
+    grid-column:1/-1;
+    margin-top:0;
+    padding-top:18px;
+    font-size:10px;
+    line-height:1.55;
+  }
+
+  /* Hero: no oversized type or clipped copy. */
+  .hero{
+    width:100%;
+    grid-template-columns:1fr;
+  }
+
+  .hero-copy{
+    padding:52px 20px 56px !important;
+    min-width:0;
+  }
+
+  .hero-copy-inner{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  .hero h1{
+    font-size:clamp(40px,11.5vw,54px);
+    line-height:1.02;
+    max-width:100%;
+    overflow-wrap:normal;
+    word-break:normal;
+    margin:18px 0 22px;
+  }
+
+  .hero p{
+    max-width:100%;
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .actions{
+    width:100%;
+    flex-direction:column;
+    gap:10px;
+    margin-top:28px;
+  }
+
+  .actions .btn{
+    width:100%;
+    min-height:50px;
+    padding:13px 16px;
+  }
+
+  .hero-art{
+    width:100%;
+    min-height:310px;
+  }
+
+  .art-card{
+    left:20px;
+    right:20px;
+    bottom:20px;
+    width:auto;
+    max-width:none;
+    padding:17px;
+  }
+
+  /* Services: balanced number / title / icon columns. */
+  .service-list{
+    margin-top:34px;
+  }
+
+  .service{
+    width:100%;
+    grid-template-columns:34px minmax(0,1fr) 28px;
+    gap:10px;
+    padding:21px 0;
+  }
+
+  .service h3{
+    font-size:clamp(21px,6vw,26px);
+    line-height:1.18;
+    overflow-wrap:break-word;
+  }
+
+  .service p{
+    font-size:13px;
+    line-height:1.55;
+  }
+
+  .service-detail{
+    padding:0 24px 22px 44px;
+    font-size:13px;
+    line-height:1.65;
+  }
+
+  /* Case study: keep the visual strong but avoid giant mobile blocks. */
+  .case{
+    width:100%;
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .case-visual{
+    width:100%;
+    min-height:300px;
+  }
+
+  .case-tag{
+    left:16px;
+    right:16px;
+    bottom:16px;
+    max-width:none;
+    padding:13px 14px;
+    font-size:9px;
+    line-height:1.4;
+  }
+
+  .case > div:last-child{
+    min-width:0;
+    padding:48px 20px 0;
+  }
+
+  .case > div:last-child h2{
+    font-size:clamp(38px,10.5vw,48px);
+    line-height:1.06;
+    margin-bottom:24px;
+  }
+
+  .case > div:last-child p{
+    font-size:16px;
+    line-height:1.72;
+  }
+
+  .result-grid{
+    width:100%;
+    grid-template-columns:1fr 1fr;
+    gap:0 22px;
+    margin:32px 0;
+  }
+
+  .result{
+    min-width:0;
+    padding:17px 0 22px;
+  }
+
+  .result b{
+    font-size:clamp(28px,8.5vw,36px);
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  .result span{
+    font-size:9px;
+    line-height:1.45;
+    margin-top:8px;
+  }
+
+  .case > div:last-child > .btn{
+    width:100%;
+    min-height:50px;
+    margin-bottom:6px;
+  }
+
+  /* Cards / insights */
+  .cards{
+    width:100%;
+    grid-template-columns:1fr;
+    gap:0;
+    margin-top:32px;
+  }
+
+  .card{
+    padding:24px 0 30px;
+  }
+
+  .card h3{
+    font-size:25px;
+    line-height:1.15;
+    margin:14px 0 20px;
+  }
+
+  /* CTA + form */
+  .cta{
+    padding:64px 0;
+  }
+
+  .cta-inner{
+    width:100%;
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+
+  .cta h2{
+    font-size:clamp(40px,11vw,54px);
+    line-height:1.05;
+  }
+
+  .cta p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .form-wrap{
+    width:100%;
+    padding:22px 16px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .field input,
+  .field select,
+  .field textarea{
+    width:100%;
+    min-height:48px;
+    font-size:16px;
+  }
+
+  .field textarea{
+    min-height:125px;
+  }
+
+  .form-wrap .btn{
+    width:100%;
+    min-height:50px;
+  }
+
+  /* Footer */
+  footer{
+    width:100%;
+    padding:48px 0 26px;
+  }
+
+  .foot{
+    width:100%;
+    display:block;
+  }
+
+  .footlinks{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px 20px;
+    margin-top:28px;
+  }
+
+  .copyright{
+    margin-top:38px;
+    line-height:1.6;
+  }
+}
+
+@media (max-width:420px){
+  .wrap{
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+
+  .hero-copy{
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+
+  .section h2,
+  .case > div:last-child h2{
+    font-size:clamp(36px,10.2vw,44px);
+  }
+
+  .stats{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  .stats .intro{
+    font-size:23px;
+  }
+
+  .stat:nth-of-type(odd){
+    padding-right:12px;
+  }
+
+  .stat:nth-of-type(even){
+    padding-left:12px;
+  }
+
+  .result-grid{
+    gap:0 16px;
+  }
+
+  .result b{
+    font-size:28px;
+  }
+
+  .result span{
+    letter-spacing:.08em;
+  }
+}
+
+/* Touch devices should not use desktop hover expansion. */
+@media (hover:none) and (pointer:coarse){
+  .service:hover{
+    padding-left:0;
+    padding-right:0;
+    background:transparent;
+  }
+
+  .btn:hover{
+    transform:none;
+  }
+}
+
 </style>
 </head>
 
